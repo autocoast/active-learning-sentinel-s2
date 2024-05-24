@@ -1,6 +1,6 @@
 # Active Learning for Sentinel 2 Imagery through Contrastive Learning and Uncertainty Estimation
 
-[This](https://github.com/autocoast/active-learning-sentinel-s2/blob/main/active_learning_s2.pdf) is our preliminary paper. It is currently being submitted to Arxiv. 
+[This](https://arxiv.org/abs/2405.13285) is our preliminary paper for this work.
 
 ![Method overview](./overview.png)
 
