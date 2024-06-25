@@ -1,6 +1,6 @@
 # Active Learning for Sentinel 2 Imagery through Contrastive Learning and Uncertainty Estimation
 
-[This](https://arxiv.org/abs/2405.13285) is our preliminary paper for this work.
+# The code will be updated by tomorrow
 
 ![Method overview](./overview.png)
 
