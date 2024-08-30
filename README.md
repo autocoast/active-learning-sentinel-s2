@@ -1,6 +1,6 @@
 # Active Learning for Sentinel 2 Imagery through Contrastive Learning and Uncertainty Estimation
 
-# The code will be updated by tomorrow
+# Code coming soon...
 
 ![Method overview](./overview.png)
 
