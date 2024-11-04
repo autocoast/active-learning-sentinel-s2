@@ -1,0 +1,12 @@
+defaults:
+    - override hydra/launcher: levante.yaml
+    - _self_
+    
+seed: 1
+n_init_labeled: 32
+n_query: 32
+n_round: 10
+dataset_name: "DW"
+strategy_name: "RandomSampling"
+uncertainty_ratio: 1.0
+init_strategy: "random"

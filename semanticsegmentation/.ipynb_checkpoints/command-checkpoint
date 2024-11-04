@@ -1,0 +1,1 @@
+python demo.py -m strategy_name=LeastConfidenceMoco,LeastConfidence,RandomSampling seed=1,2,3

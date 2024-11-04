@@ -1,0 +1,19 @@
+_target_: hydra_plugins.hydra_submitit_launcher.submitit_launcher.SlurmLauncher
+submitit_folder: xxx/.submitit/%j
+cpus_per_task: 16
+job_name: xxx
+nodes: 1
+ntasks_per_node: 1
+partition: gpu
+gpus_per_node: 1
+timeout_min: 600
+additional_parameters:
+    account: xxx
+    constraint: a100_80
+    time: 25
+    output: xxx/slurm-%j.out
+    signal: SIGUSR1@90
+    wckey: null
+    mem: 0
+    mail_user: xxx
+    mail-type: FAIL
