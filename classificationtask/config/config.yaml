@@ -2,7 +2,7 @@ defaults:
     #- override hydra/launcher: slurmconf.yaml
     - _self_
 
-root_path: "/change/to/path/eurosat" # <---- this should point to the downloaded eurosat folder
+root_path: "/path/to/eurosat" # <---- this should point to the downloaded eurosat folder
     
 seed: 1
 n_init_labeled: 32
@@ -14,13 +14,13 @@ init_strategy: "random"
 balance: True
 
 # embeddings
-unbalanced_embedding_path: "${root_path}/eurosat_imbalance_2048_embedding.npy"
-balance_embedding_path: "${root_path}/balance_eurosat_2048_embedding.npy"
+unbalanced_embedding_path: "${root_path}/eurosat_unbalanced/eurosat_imbalance_2048_embedding.npy"
+balance_embedding_path: "${root_path}/eurosat_balance/balance_eurosat_2048_embedding.npy"
 
 # train and test data
-balance_x_train_path: "${root_path}/balance_42_train_x.pt"
-balance_y_train_path: "${root_path}/balance_42_train_y.pt"
-unbalanced_x_train_path: "${root_path}/imbalance_42_train_x.pt"
-unbalanced_y_train_path: "${root_path}/imbalance_42_train_y.pt"
+balance_x_train_path: "${root_path}/eurosat_balance/balance_42_train_x.pt"
+balance_y_train_path: "${root_path}/eurosat_balance/balance_42_train_y.pt"
+unbalanced_x_train_path: "${root_path}/eurosat_unbalanced/imbalance_42_train_x.pt"
+unbalanced_y_train_path: "${root_path}/eurosat_unbalanced/imbalance_42_train_y.pt"
 x_test_path: "${root_path}/eurosat_x_small.pt"
 y_test_path: "${root_path}/eurosat_y_small.pt"
