@@ -2,7 +2,7 @@ defaults:
     #- override hydra/launcher: slurmconf.yaml
     - _self_
 
-root_path: "/change/to/eurosat/path" # <---- this should point to the downloaded eurosat folder
+root_path: "/change/to/path/eurosat" # <---- this should point to the downloaded eurosat folder
     
 seed: 1
 n_init_labeled: 32
