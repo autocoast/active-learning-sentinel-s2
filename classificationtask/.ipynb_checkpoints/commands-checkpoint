@@ -1,3 +1,0 @@
-python demo_module.py -m strategy_name=RandomSampling,LeastConfidence,MarginSampling,EntropySampling,LeastConfidenceDropout,MarginSamplingDropout,EntropySamplingDropout,KMeansSampling,KCenterGreedy,BALDDropout,AdversarialBIM seed=1,2,3
-
-python demo_module.py -m strategy_name=AdversarialBIM seed=1,2,3

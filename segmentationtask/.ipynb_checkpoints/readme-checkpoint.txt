@@ -1,3 +1,0 @@
-- out = our encoding seed 6-15
-- big = seeds 6 - 15
-- fps_big = seeds 6 - 15 mocofps 2048er encoding
