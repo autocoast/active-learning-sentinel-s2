@@ -11,9 +11,9 @@ class Strategy:
         self.cfg = cfg
 
         if cfg.balance == True:
-            self.embeddings = np.load(f'/work/gg0877/g260217/al_paper/eurosat_s2_al/balance_eurosat_2048_embedding.npy')
+            self.embeddings = np.load(cfg.balance_embedding_path)
         else:
-            self.embeddings = np.load(f'/work/gg0877/g260217/al_paper/eurosat_s2_al/eurosat_imbalance_2048_embedding.npy')
+            self.embeddings = np.load(cfg.unbalanced_embedding_path)
 
     def query(self, n):
         pass

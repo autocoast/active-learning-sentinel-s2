@@ -13,9 +13,28 @@ This repository builds on the **deep-active-learning** framework, with several a
 2. **New Initialization Strategy**: Additional initialization strategy have been introduced
 3. **SLURM and Hydra Integration**: This repository integrates SLURM job scheduling with Hydra for seamless configuration management across various experimental runs and computing environments.
 
-## Getting Started
+## Preparing the data
+#### Classification
+- [Eurosat Data](https://drive.google.com/file/d/1GpHgJizhnMswW-OycPPawQGPqSfBsF_G/view?usp=sharing) (unzipped ~17GB)
+#### Semantic Segmentation
+- [Dynamic World](https://drive.google.com/file/d/1az-MopDVropJl_4fQABmR0B50yxw68N6/view?usp=sharing) (unzipped ~3GB)
 
-### Prerequisites
+Download and unzip the data.
+- For semantic segmentation, change the root_path in segmentationtask/config.yaml
+- For classification, change the root_path in classificationtask/config.yaml
+
+## Running
+
+To ensure consistent dependencies, we recommend creating a virtual environment and installing the requirements within that environment. Follow these steps:
+
+1. **Create and activate a virtual environment** (using `venv`, `conda`, or your preferred tool):
+
+   ```bash
+   python3 -m venv env
+   source env/bin/activate  # For Linux/macOS
+   .\env\Scripts\activate   # For Windows
+
+### Install the requirements
 
 Ensure you have Python and dependencies installed. Use the provided `requirements.txt` to install necessary packages, such as `torch`, `numpy`, `sklearn`, and `hydra`.
 
@@ -23,7 +42,31 @@ Ensure you have Python and dependencies installed. Use the provided `requirement
 pip install -r requirements.txt
 ```
 
+Once the environment is set up, you can run the code for active learning tasks in two ways: locally or on a SLURM cluster.
+
+### Local Execution
+To run experiments locally with a specific active learning strategy (e.g., RandomSampling), use:
+```
+python main.py -m strategy_name=RandomSampling
+```
+
+### SLURM Execution
+For running on a SLURM cluster, ensure SLURM configuration is set up in the settings:
+
+1. **Edit the SLURM configuration:** Open the /config/hydra/slurmconf.yaml file and configure it according to your SLURM environment.
+
+2. **Enable SLURM execution:** Uncomment the SLURM configuration line in config/config.yaml
+
+Then, run the code with the --multirun option to submit multiple jobs:
+```
+python main.py -m strategy_name=RandomSampling --multirun
+```
+
+This will allow Hydra to manage multiple runs efficiently on the SLURM cluster.
+
 # Results
+
+We used seeds 1-10 (both including) for our experiments (see seed parameter in config.yaml) per query strategy.
 
 The following plots illustrate the comparison of different active learning strategies on Sentinel-2 satellite imagery.
 

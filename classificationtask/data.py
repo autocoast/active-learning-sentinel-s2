@@ -21,9 +21,9 @@ class Data:
         self.labeled_idxs = np.zeros(self.n_pool, dtype=bool)
         
         if cfg.balance == True:
-            self.embeddings = np.load(f'/work/gg0877/g260217/al_paper/eurosat_s2_al/balance_eurosat_2048_embedding.npy')
+            self.embeddings = np.load(cfg.balance_embedding_path)
         else:
-            self.embeddings = np.load(f'/work/gg0877/g260217/al_paper/eurosat_s2_al/eurosat_imbalance_2048_embedding.npy')
+            self.embeddings = np.load(cfg.unbalanced_embedding_path)
 
     def kmeans_initialization(self, num, seed):
         # Perform k-means clustering on the embeddings
@@ -84,26 +84,25 @@ class Data:
 
 def get_EuroSAT(handler, cfg):
     if cfg.balance:
-        train_x = torch.load("/work/gg0877/g260217/al_paper/eurosat_s2_al/balance_42_train_x.pt")
-        train_y = torch.load("/work/gg0877/g260217/al_paper/eurosat_s2_al/balance_42_train_y.pt")
+        train_x = torch.load(cfg.balance_x_train_path)
+        train_y = torch.load(cfg.balance_y_train_path)
     else:
-        train_x = torch.load("/work/gg0877/g260217/al_paper/eurosat_s2_al/imbalance_42_train_x.pt")
-        train_y = torch.load("/work/gg0877/g260217/al_paper/eurosat_s2_al/imbalance_42_train_y.pt")
+        train_x = torch.load(cfg.unbalanced_x_train_path)
+        train_y = torch.load(cfg.unbalanced_y_train_path)
         
-    test_x = torch.load("/work/gg0877/g260217/al_paper/eurosat_s2_al/eurosat_x_small.pt")
-    test_y = torch.load("/work/gg0877/g260217/al_paper/eurosat_s2_al/eurosat_y_small.pt")
+    test_x = torch.load(cfg.x_test_path)
+    test_y = torch.load(cfg.y_test_path)
     return Data(train_x, torch.LongTensor(train_y), test_x, torch.LongTensor(test_y), handler, cfg)
 
-def farthest_point_sampling(data, num_samples, initial_indices=None, ignore_indices=None, seed=None, half_farthest=False):
+def farthest_point_sampling(data, num_samples, initial_indices=None, ignore_indices=None, seed=None):
     """
-    Perform Farthest Point Sampling on a dataset, with an option to select the farthest or half-farthest points.
+    Perform Farthest Point Sampling on a dataset.
 
     :param data: A NumPy array of shape (n_points, n_features)
     :param num_samples: The total number of samples to select, including initial samples
     :param initial_indices: Indices of the initial pre-selected samples
     :param ignore_indices: Indices of the points to ignore during sampling
     :param seed: Optional random seed for reproducibility
-    :param half_farthest: If True, select points that are halfway between the closest and farthest
     :return: Indices of the sampled points
     """
 
@@ -138,15 +137,8 @@ def farthest_point_sampling(data, num_samples, initial_indices=None, ignore_indi
     sampled_indices = initial_indices.copy()
 
     while len(sampled_indices) < num_samples:
-        if half_farthest:
-            # Sort indices by distance and choose a point near the middle
-            valid_indices = np.where(distances != -np.inf)[0]
-            sorted_indices = valid_indices[np.argsort(distances[valid_indices])]
-            mid_idx = len(sorted_indices) // 2
-            selected_idx = sorted_indices[mid_idx]
-        else:
-            # Select the farthest point
-            selected_idx = np.argmax(distances)
+        # Select the farthest point
+        selected_idx = np.argmax(distances)
 
         sampled_indices.append(selected_idx)
 
