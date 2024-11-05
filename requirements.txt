@@ -1,0 +1,9 @@
+numpy
+torch
+torchvision
+scikit-learn
+matplotlib
+tqdm
+pillow
+hydra-core
+
