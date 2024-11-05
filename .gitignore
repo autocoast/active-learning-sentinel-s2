@@ -1,8 +1,10 @@
 **/.pyc
 **/.DS_Store
 **/.ipynb_checkpoints
+**/__pycache__
 dynamicworld
 eurosat
 dynamicworld.zip
 eurosat.zip
 bla
+multirun
