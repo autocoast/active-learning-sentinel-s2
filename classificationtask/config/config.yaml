@@ -1,5 +1,5 @@
 defaults:
-    - override hydra/launcher: levante.yaml
+    #- override hydra/launcher: slurmconf.yaml
     - _self_
     
 seed: 1

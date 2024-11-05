@@ -2,7 +2,7 @@ from torchvision import transforms
 from handlers import DW_Handler
 from data import get_DW
 from nets import Net, DW_Net
-from query_strategies import RandomSampling, LeastConfidence, LeastConfidenceMoco, LeastConfidenceV2, LeastConfidenceEntropy, LeastConfidenceMedian, LeastConfidenceMocoMedian, LeastConfidenceMocoMargin, LeastConfidenceMocoMarginV2, LeastConfidenceMoCoGMM,  LeastConfidenceMoCoKMeans, LeastConfidenceMoCoFPS, LeastConfidenceMedianFPS, LeastConfidenceMeanPercentile, MarginSampling, LeastConfidenceMeanPercentileAlternate, LeastConfidenceMeanPercentileDropout, KCenterGreedy, KMeansSampling, MarginSamplingDropout, EntropySampling, EntropySamplingDropout, BALDDropout
+from query_strategies import RandomSampling, LeastConfidenceMeanPercentile, MarginSampling, LeastConfidenceMeanPercentileDropout, KCenterGreedy, KMeansSampling, MarginSamplingDropout, EntropySampling, EntropySamplingDropout, BALDDropout
 
 params = {
           'DW':
@@ -34,38 +34,10 @@ def get_params(name):
 def get_strategy(name):
     if name == "RandomSampling":
         return RandomSampling
-    elif name == "LeastConfidence":
-        return LeastConfidence
-    elif name == "LeastConfidenceMoco":
-        return LeastConfidenceMoco
-    elif name == "LeastConfidenceV2":
-        return LeastConfidenceV2
-    elif name == "LeastConfidenceEntropy":
-        return LeastConfidenceEntropy
-    elif name == "LeastConfidenceMedian":
-        return LeastConfidenceMedian
-    elif name == "LeastConfidenceMocoMedian":
-        return LeastConfidenceMocoMedian
-    elif name == "LeastConfidenceMocoMargin":
-        return LeastConfidenceMocoMargin
-    elif name == "LeastConfidenceMoCoGMM":
-        return LeastConfidenceMoCoGMM
-    elif name == "LeastConfidenceMoCoKMeans":
-        return LeastConfidenceMoCoKMeans
-    elif name == "LeastConfidenceMoCoFPS":
-        return LeastConfidenceMoCoFPS
-    elif name == "LeastConfidenceMedianFPS":
-        return LeastConfidenceMedianFPS
     elif name == "LeastConfidenceMeanPercentile":
         return LeastConfidenceMeanPercentile
     elif name == "MarginSampling":
         return MarginSampling
-    elif name == "LeastConfidenceMocoMarginV2":
-        return LeastConfidenceMocoMarginV2
-    elif name == "LeastConfidenceMeanPercentileAlternate":
-        return LeastConfidenceMeanPercentileAlternate
-    elif name == "LeastConfidenceMocoMarginV2":
-        return LeastConfidenceMocoMarginV2
     elif name == "LeastConfidenceMeanPercentileDropout":
         return LeastConfidenceMeanPercentileDropout
     elif name == "KCenterGreedy":
