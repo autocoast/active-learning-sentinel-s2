@@ -2,8 +2,7 @@ defaults:
     #- override hydra/launcher: slurmconf.yaml
     - _self_
     
-#root_path: "/path/to/dynamicworld" # <---- this should point to the downloaded dynamic world folder
-root_path: "/Users/davidpogorzelski/active-learning-sentinel-s2/dynamicworld"
+root_path: "/path/to/dynamicworld" # <---- this should point to the downloaded dynamic world folder
 
 seed: 1
 n_init_labeled: 32
