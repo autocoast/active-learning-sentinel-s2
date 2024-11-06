@@ -17,10 +17,9 @@ def get_handler(name):
     if name == 'DW':
         return DW_Handler
 
-def get_dataset(name):
+def get_dataset(name, cfg):
     if name == 'DW':
-        return get_DW(get_handler(name))
-        raise NotImplementedError
+        return get_DW(get_handler(name), cfg)
         
 def get_net(name, device):
     if name == 'DW':

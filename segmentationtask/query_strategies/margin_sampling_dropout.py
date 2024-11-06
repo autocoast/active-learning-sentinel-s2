@@ -3,8 +3,8 @@ import torch
 from .strategy import Strategy
 
 class MarginSamplingDropout(Strategy):
-    def __init__(self, dataset, net):
-        super(MarginSamplingDropout, self).__init__(dataset, net)
+    def __init__(self, dataset, net, cfg):
+        super(MarginSamplingDropout, self).__init__(dataset, net, cfg)
 
     def get_confidences(self, probs, topk=0):
         # Calculate max probability per pixel to get uncertainty

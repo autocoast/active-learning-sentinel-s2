@@ -7,7 +7,7 @@ from math import isnan
 
 
 class Data:
-    def __init__(self, X_train, Y_train, X_test, Y_test, handler):
+    def __init__(self, X_train, Y_train, X_test, Y_test, handler, cfg):
         self.X_train = X_train
         self.Y_train = Y_train
         self.X_test = X_test
@@ -18,8 +18,7 @@ class Data:
         self.n_test = len(X_test)
 
         self.labeled_idxs = np.zeros(self.n_pool, dtype=bool)
-        #self.embedding = np.load(f'/work/gg0877/g260217/al_paper/eurosat_s2_al/moco_dw/512_64_NTXentLossWithIndices_42_100/42_embeddings.npy')
-        self.embedding = np.load(f'/work/gg0877/g260217/al_paper/eurosat_s2_al/moco_dw/2048/128_2048_embedding.npy')
+        self.embedding = np.load(cfg.embedding_path)
         
     def initialize_labels(self, num, strategy, seed=1):
         if strategy == "fps":
@@ -103,12 +102,12 @@ class Data:
 
 
 
-def get_DW(handler):
-    train_x = torch.load("/work/gg0877/g260217/al_paper/eurosat_s2_al/128_dw_x_train.pt")
-    train_y = torch.load("/work/gg0877/g260217/al_paper/eurosat_s2_al/128_dw_y_train.pt")
-    test_x = torch.load("/work/gg0877/g260217/al_paper/eurosat_s2_al/128_dw_x_test.pt")
-    test_y = torch.load("/work/gg0877/g260217/al_paper/eurosat_s2_al/128_dw_y_test.pt")
-    return Data(train_x, train_y, test_x, test_y, handler)
+def get_DW(handler, cfg):
+    train_x = torch.load(cfg.x_train_path)
+    train_y = torch.load(cfg.y_train_path)
+    test_x = torch.load(cfg.x_test_path)
+    test_y = torch.load(cfg.y_test_path)
+    return Data(train_x, train_y, test_x, test_y, handler, cfg)
 
 
 def farthest_point_sampling(data, num_samples, initial_indices=None, ignore_indices=None, seed=None, half_farthest=False):

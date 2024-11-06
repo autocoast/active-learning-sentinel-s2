@@ -5,11 +5,11 @@ import torch.optim as optim
 from torch.utils.data import DataLoader
 
 class Strategy:
-    def __init__(self, dataset, net):
+    def __init__(self, dataset, net, cfg):
         self.dataset = dataset
         self.net = net
 
-        self.embeddings = np.load(f'/work/gg0877/g260217/al_paper/eurosat_s2_al/moco_dw/2048/128_2048_embedding.npy')
+        self.embeddings = np.load(cfg.embedding_path)
 
     def query(self, n, cfg):
         pass

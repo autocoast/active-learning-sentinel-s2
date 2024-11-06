@@ -3,8 +3,8 @@ import numpy as np
 from .strategy import Strategy
 
 class LeastConfidenceMeanPercentile(Strategy):
-    def __init__(self, dataset, net):
-        super(LeastConfidenceMeanPercentile, self).__init__(dataset, net)
+    def __init__(self, dataset, net, cfg):
+        super(LeastConfidenceMeanPercentile, self).__init__(dataset, net, cfg)
 
     def get_confidences(self, probs):
         # Calculate max probability per pixel to get uncertainty

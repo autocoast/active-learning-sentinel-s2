@@ -3,8 +3,8 @@ import torch
 from .strategy import Strategy
 
 class BALDDropout(Strategy):
-    def __init__(self, dataset, net, n_drop=10):
-        super(BALDDropout, self).__init__(dataset, net)
+    def __init__(self, dataset, net, cfg, n_drop=10):
+        super(BALDDropout, self).__init__(dataset, net, cfg)
         self.n_drop = n_drop
 
     def get_confidences(self, probs):

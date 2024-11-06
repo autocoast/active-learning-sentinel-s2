@@ -14,7 +14,6 @@ from omegaconf import DictConfig, OmegaConf
 
 @hydra.main(config_path="config", config_name="config.yaml", version_base="1.1")
 def run_demo(cfg):
-    #try:
     print(cfg.n_round)
 
     experiment_id = str(uuid.uuid4())
@@ -48,9 +47,9 @@ def run_demo(cfg):
     print(cfg.strategy_name, cfg.init_strategy)
 
     if cfg.balance:
-        save_file = f'/home/g/g260217/mc-dropout/paper_eurosat/deep-active-learning/v2_balance_experiments_n16_e15'
+        save_file = f'{cfg.log_file_path}_balanced'
     else:
-        save_file = f'/home/g/g260217/mc-dropout/paper_eurosat/deep-active-learning/v2_unbalance_experiments_n16_e15'
+        save_file = f'{cfg.log_file_path}_unbalanced'
         
     with open(save_file, 'a') as f:
         f.write(f'{cfg.strategy_name}_{cfg.init_strategy},{cfg.seed},{experiment_id},{dataset.cal_test_acc(preds)}\n')
@@ -71,14 +70,6 @@ def run_demo(cfg):
 
         with open(save_file, 'a') as f:
             f.write(f'{cfg.strategy_name}_{cfg.init_strategy},{cfg.seed},{experiment_id},{dataset.cal_test_acc(preds)}\n')
-    '''
-    except Exception as e:
-        with open(f'/home/g/g260217/mc-dropout/paper_eurosat/deep-active-learning/errors', 'a') as f:
-            f.write(str(e))
-            f.write('\n')
-            f.write(OmegaConf.to_yaml(cfg))
-            f.write('=============')
-    '''
-
+   
 if __name__ == "__main__":
     run_demo()

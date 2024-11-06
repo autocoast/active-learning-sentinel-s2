@@ -2,6 +2,9 @@ defaults:
     #- override hydra/launcher: slurmconf.yaml
     - _self_
     
+#root_path: "/path/to/dynamicworld" # <---- this should point to the downloaded dynamic world folder
+root_path: "/Users/davidpogorzelski/active-learning-sentinel-s2/dynamicworld"
+
 seed: 1
 n_init_labeled: 32
 n_query: 32
@@ -10,3 +13,14 @@ dataset_name: "DW"
 strategy_name: "RandomSampling"
 uncertainty_ratio: 1.0
 init_strategy: "random"
+
+# embeddings
+embedding_path: "${root_path}/128_2048_embedding.npy"
+
+# train and test data
+x_test_path: "${root_path}/128_dw_x_test.pt"
+y_test_path: "${root_path}/128_dw_y_test.pt"
+x_train_path: "${root_path}/128_dw_x_train.pt"
+y_train_path: "${root_path}/128_dw_y_train.pt"
+
+log_file_path: "${root_path}/experiment_logs"

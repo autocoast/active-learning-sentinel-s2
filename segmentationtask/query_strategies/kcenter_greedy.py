@@ -4,8 +4,8 @@ from sklearn.neighbors import NearestNeighbors
 from tqdm import tqdm
 
 class KCenterGreedy(Strategy):
-    def __init__(self, dataset, net):
-        super(KCenterGreedy, self).__init__(dataset, net)
+    def __init__(self, dataset, net, cfg):
+        super(KCenterGreedy, self).__init__(dataset, net, cfg)
 
     def query(self, n, cfg):
         labeled_idxs, train_data = self.dataset.get_train_data()

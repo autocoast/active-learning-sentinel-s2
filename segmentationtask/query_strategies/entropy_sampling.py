@@ -3,8 +3,8 @@ import torch
 from .strategy import Strategy
 
 class EntropySampling(Strategy):
-    def __init__(self, dataset, net):
-        super(EntropySampling, self).__init__(dataset, net)
+    def __init__(self, dataset, net, cfg):
+        super(EntropySampling, self).__init__(dataset, net, cfg)
 
     def get_confidences(self, probs):
         # Reshape to Nx10x(512*512) for easier percentile computation

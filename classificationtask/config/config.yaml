@@ -24,3 +24,5 @@ unbalanced_x_train_path: "${root_path}/eurosat_unbalanced/imbalance_42_train_x.p
 unbalanced_y_train_path: "${root_path}/eurosat_unbalanced/imbalance_42_train_y.pt"
 x_test_path: "${root_path}/eurosat_x_small.pt"
 y_test_path: "${root_path}/eurosat_y_small.pt"
+
+log_file_path: "${root_path}/experiment_logs"
